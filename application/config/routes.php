@@ -70,3 +70,9 @@ $route['updatePointsSubmit'] = 'Point/updatePointsSubmit';
 $route['deletePoints'] = 'Point/deletePoints';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+$route['create_note'] = 'Notes/create_note';
+$route['view_notes'] = 'Notes/view_notes';
+$route['edit_note/(:any)'] = 'Notes/edit_note/$1';
+$route['delete_note/(:any)'] = 'Notes/delete_note/$1';

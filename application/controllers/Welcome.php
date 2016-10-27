@@ -21,7 +21,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->database();
-		$query = $this->db->query('SELECT * FROM gcm_users');
+		$query = $this->db->query('SELECT * FROM notes');
 		$rows = array();
 		foreach ($query->result() as $row) $rows[] = $row;
 		//print json_encode($rows);
