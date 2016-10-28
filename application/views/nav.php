@@ -9,6 +9,6 @@
             <li><a href="create_tournament">Tournaments</a></li>
             <li><a href="create_points">Points</a></li>
         </ul>
-        <div class="btn pull-right"><a href="logout">Logout</a></div>
+        <div class="btn pull-right"><a href="<?php echo base_url();?>Login/logout">Logout</a></div>
     </div>
 </nav>

@@ -17,15 +17,25 @@ class Notes extends CI_Controller
         $this->load->library(array('session', 'form_validation', 'email'));
     }
 
+    //This function for checking is user is logged in or not
+    function authentication_check()
+    {
+        if (!$this->session->userdata('is_logged_in')) {
+            redirect('Login/login');
+            return;
+        }
+    }
+
     public function create_note()
     {
+        self::authentication_check();
         $this->load->view('notes/create_note');
 
     }
 
     public function save_note()
     {
-        //self::sessionControl();
+        self::authentication_check();
         $autoload['helper'] = array('security');
         $this->load->helper('security');
         $this->form_validation->set_rules('title', 'Name', 'trim|required|xss_clean');
@@ -35,7 +45,7 @@ class Notes extends CI_Controller
         }
         $title = $this->input->post('title');
         $description = $this->input->post('description');
-        $user_id = "1";
+        $user_id = $this->session->userdata('userid');
         $this->load->database();
         $query = $this->db->query('INSERT INTO notes (title, description, user_id) VALUES("' . $title . '","' . $description . '", "' . $user_id . '")');
         $this->session->set_flashdata('msg', '<div class="alert alert-success text-center">New note has been saved successfully!</div>');
@@ -45,25 +55,21 @@ class Notes extends CI_Controller
 
     public function update_note($id)
     {
-        //self::sessionControl();
-        $rows = array();
+        self::authentication_check();
         $title = $this->input->post('title');
         $description = $this->input->post('description');
-        $user_id = "1";
         $this->load->database();
         $sql = "UPDATE `notes` SET `title` = '" . $title . "',
         `description` = '" . $description . "' WHERE `id` =" . $id;
         $query = $this->db->query($sql);
         $this->session->set_flashdata('msg', '<div class="alert alert-success text-center"> Note updated successfully!</div>');
-        //self::createPoints();
         redirect('/view_notes');
     }
 
     public function edit_note($id)
     {
-        //self::sessionControl();
+        self::authentication_check();
         $rows = array();
-        //$id = $this->input->get('id');
         $this->load->database();
         $sql = "SELECT * FROM notes where id =". $id;
         $query = $this->db->query($sql);
@@ -74,12 +80,11 @@ class Notes extends CI_Controller
 
     public function view_notes()
     {
+        self::authentication_check();
         $this->load->database();
         $query = $this->db->query('SELECT * FROM notes');
         $rows = array();
         foreach ($query->result() as $row) $rows[] = $row;
-        //print json_encode($rows);
-
         $data['result'] = $rows;
         $this->load->view('notes/view_notes', $data);
 
@@ -87,7 +92,7 @@ class Notes extends CI_Controller
 
     public function delete_note($id)
     {
-        $rows = array();
+        self::authentication_check();
         $this->load->database();
         $sql = "Delete from notes where id=".$id;
         $query = $this->db->query($sql);

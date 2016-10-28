@@ -76,3 +76,4 @@ $route['create_note'] = 'Notes/create_note';
 $route['view_notes'] = 'Notes/view_notes';
 $route['edit_note/(:any)'] = 'Notes/edit_note/$1';
 $route['delete_note/(:any)'] = 'Notes/delete_note/$1';
+$route['login'] = 'Login/login';
