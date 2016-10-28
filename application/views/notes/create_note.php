@@ -15,12 +15,13 @@
 </head>
 <body>
 <div class="container">
+	<?php $this->load->view('nav.php'); ?>
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3 well">
 			<?php $attributes = array("class" => "form-horizontal", "name" => "notesaveform");
 			echo form_open(base_url()."Notes/save_note", $attributes);?>
 			<fieldset>
-				<legend>Contact Form</legend>
+				<legend>Create a new note</legend>
 				<div class="form-group">
 					<div class="col-md-12">
 						<label for="name" class="control-label">Title</label>

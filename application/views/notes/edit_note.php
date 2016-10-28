@@ -15,6 +15,7 @@
 </head>
 <body>
 <div class="container">
+    <?php $this->load->view('nav.php'); ?>
     <div class="row">
         <div class="col-md-6 col-md-offset-3 well">
             <?php
@@ -23,7 +24,7 @@
                 echo form_open(base_url() . "Notes/update_note/".$note->id, $attributes);
                 ?>
                 <fieldset>
-                    <legend>Contact Form</legend>
+                    <legend>Update Note</legend>
                     <div class="form-group">
                         <div class="col-md-12">
                             <label for="name" class="control-label">Title</label>

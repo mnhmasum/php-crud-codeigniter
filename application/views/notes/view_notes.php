@@ -2,23 +2,24 @@
 <body>
 <div class="container">
     <?php $this->load->view('nav.php'); ?>
-    <div class="jumbotron">
-        <h1>CREATE NEW POINTS</h1>
-        <p> - Create new points</p>
-        <?php echo $this->session->flashdata('msg'); ?>
-    </div>
+
+    <h1>All Notes</h1>
+
+    <p> - All notes are visible here in a table</p>
+    <?php echo $this->session->flashdata('msg'); ?>
+
     <div class="row">
 
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="well">
-                <legend>Tournaments Points Table</legend>
+                <legend>Notes</legend>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Team Name</th>
-                            <th>Match Played</th>
+                            <th>Title</th>
+                            <th>Description</th>
                             <th colspan="2">Actions</th>
                         </tr>
                         </thead>
@@ -30,8 +31,8 @@
                             echo "<td>" . $note->id . "</td>";
                             echo "<td>" . $note->title . "</td>";
                             echo "<td>" . $note->description . "</td>";
-                            echo "<td><a href='edit_note/".$note->id."'>Update</a></td>";
-                            echo "<td><a href='delete_note/".$note->id."'>delete</a></td>";
+                            echo "<td><a href='edit_note/" . $note->id . "'>Update</a></td>";
+                            echo "<td><a href='delete_note/" . $note->id . "'>delete</a></td>";
                             echo "</tr>";
                         }
                         ?>
@@ -43,6 +44,11 @@
             </div>
         </div>
     </div>
+
+    <p class="footer">Page rendered in <strong>{elapsed_time}</strong>
+        seconds. <?php echo (ENVIRONMENT === 'development') ? 'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?>
+    </p>
+
 </div>
 </body>
 </html>
