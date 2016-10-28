@@ -5,7 +5,7 @@
         <?php echo $this->session->flashdata('msg'); ?>
         <div class="row">
             <?php $attributes = array("class" => "form-horizontal", "name" => "save-team-form");
-            echo form_open(base_url()."Login/login_submit", $attributes); ?>
+            echo form_open(base_url() . "Login/login_submit", $attributes); ?>
             <div class="col-md-4">
                 <div class="well">
                     <h1 class="text-center login-title">Sign In</h1>
@@ -29,6 +29,13 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div class="col-md-6">
+                <div class="well">
+                    User: masum<br>
+                    Password: 123456
+                </div>
             </div>
             <?php echo form_close(); ?>
         </div>
